@@ -33,8 +33,47 @@ void insert_newline(FILE *f);
  */
 int get_indent(void);
 
+/**
+ * @brief  Write canonical JSON representing a specified boolean or null value to
+ * a specified output stream.
+ * @details  Write canonical JSON representing a specified boolean or null value
+ * to specified output stream. See the assignment document for a
+ * detailed discussion of the data structure and what is meant by
+ * canonical JSON.
+ *
+ * @param v  Data structure representing a value.
+ * @param f  Output stream to which JSON is to be written.
+ * @return  Zero if the operation is completely successful,
+ * nonzero if there is any error.
+ */
 int argo_write_basic(ARGO_BASIC *b, FILE *f);
 
+/**
+ * @brief  Write canonical JSON representing a specified object value to
+ * a specified output stream.
+ * @details  Write canonical JSON representing a specified onject value
+ * to specified output stream.  See the assignment document for a
+ * detailed discussion of the data structure and what is meant by
+ * canonical JSON.
+ *
+ * @param v  Data structure representing a value.
+ * @param f  Output stream to which JSON is to be written.
+ * @return  Zero if the operation is completely successful,
+ * nonzero if there is any error.
+ */
 int argo_write_object(ARGO_OBJECT *o, FILE *f);
 
+/**
+ * @brief  Write canonical JSON representing a specified array value to
+ * a specified output stream.
+ * @details  Write canonical JSON representing a specified array value
+ * to specified output stream.  See the assignment document for a
+ * detailed discussion of the data structure and what is meant by
+ * canonical JSON.
+ *
+ * @param v  Data structure representing a value.
+ * @param f  Output stream to which JSON is to be written.
+ * @return  Zero if the operation is completely successful,
+ * nonzero if there is any error.
+ */
 int argo_write_array(ARGO_ARRAY *a, FILE *f);

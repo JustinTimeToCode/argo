@@ -141,4 +141,5 @@ int char_indexOf(char *s, char target, int len)
 
 float str_to_sci_note(char *str)
 {
+    return 0.0;
 }
