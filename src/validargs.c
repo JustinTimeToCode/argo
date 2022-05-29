@@ -3,6 +3,7 @@
 #include "argo.h"
 #include "global.h"
 #include "debug.h"
+#include "custring.h"
 
 /**
  * @brief Validates command line arguments passed to the program.
@@ -20,7 +21,42 @@
  * of the selected program options.
  */
 
-int validargs(int argc, char **argv) {
+int validargs(int argc, char **argv)
+{
     // TO BE IMPLEMENTED
-    abort();
+    if (argc <= 1)
+    {
+        return -1;
+    }
+
+    int h_idx = str_indexOf("-h", argv, argc);
+    if (h_idx == 1)
+    {
+        global_options = HELP_OPTION;
+        return 0;
+    }
+    int c_idx = str_indexOf("-c", argv, argc);
+    int v_idx = str_indexOf("-v", argv, argc);
+    int p_idx = str_indexOf("-p", argv, argc);
+    int INDENT = (p_idx != -1 && p_idx < argc - 1) ? str_to_int(*(argv + p_idx + 1)) : 4;
+    if (c_idx == 1)
+    {
+        global_options = CANONICALIZE_OPTION;
+        if (p_idx != -1 && p_idx == c_idx + 1)
+        {
+            global_options |= PRETTY_PRINT_OPTION | INDENT;
+        }
+        return 0;
+    }
+    else if (v_idx == 1 && v_idx == argc - 1)
+    {
+        global_options = VALIDATE_OPTION;
+        return 0;
+    }
+    else
+    {
+        return -1;
+    }
+    // abort();
+    return -1;
 }
